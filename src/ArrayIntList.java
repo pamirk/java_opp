@@ -43,6 +43,13 @@ public class ArrayIntList {
         size++;
     }
 
+    // appends all values in the given list to the end of this list
+    public void addAll(ArrayIntList other) {
+        ensureCapacity(size + other.size);
+        for (int i = 0; i < other.size; i++) {
+            add(other.get(i));
+        }
+    }
     // post: ensures that the list has the given capacity; if not, the size is
     //       doubled (or more if given capacity is even larger)
     private void ensureCapacity(int capacity) {
