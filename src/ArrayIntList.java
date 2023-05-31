@@ -50,8 +50,18 @@ public class ArrayIntList {
             add(other.get(i));
         }
     }
-    // post: ensures that the list has the given capacity; if not, the size is
-    //       doubled (or more if given capacity is even larger)
+
+    // pre : 0 <= index < size() (throws IndexOutOfBoundsException if not)
+    // post: removes value at the given index, shifting subsequent values left
+    public void remove(int index) {
+        for (int i = index; i < size - 1; i++) {
+            elementData[index] = elementData[index + 1];
+        }
+        size--;
+    }
+
+    // ensures that the list has the given capacity; if not, the size is
+    // doubled (or more if given capacity is even larger)
     private void ensureCapacity(int capacity) {
         if (capacity > elementData.length) {
             int newCapacity = capacity * 2 + 1;
