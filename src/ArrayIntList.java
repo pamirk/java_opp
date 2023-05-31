@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 //
 public class ArrayIntList {
     private int[] elementData;
@@ -26,19 +28,31 @@ public class ArrayIntList {
     }
 
     public void add(int value) {
-        elementData[size] = value;
-        size++;
+        add(size, value);
     }
 
     public void add(int index, int value) {
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("index: " + index);
         }
+        ensureCapacity(size + 1);
         for (int i = size; i > index; i--) {
             elementData[i] = elementData[i - 1];
         }
         elementData[index] = value;
         size++;
+    }
+
+    // post: ensures that the list has the given capacity; if not, the size is
+    //       doubled (or more if given capacity is even larger)
+    private void ensureCapacity(int capacity) {
+        if (capacity > elementData.length) {
+            int newCapacity = capacity * 2 + 1;
+            if (capacity > newCapacity) {
+                newCapacity = capacity;
+            }
+            elementData = Arrays.copyOf(elementData, newCapacity);
+        }
     }
 
     // post : returns the position of the first occurrence of the given
