@@ -4,7 +4,11 @@ public class ArrayIntList {
     private int size;
 
     public ArrayIntList() {
-        elementData = new int[100];
+        this(100);
+    }
+
+    public ArrayIntList(int capacity) {
+        elementData = new int[capacity];
         size = 0;
     }
     public void add(int value) {
