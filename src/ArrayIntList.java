@@ -24,6 +24,7 @@ public class ArrayIntList {
     }
 
     public int get(int index) {
+        checkIndex(index);
         return elementData[index];
     }
 
@@ -54,10 +55,18 @@ public class ArrayIntList {
     // pre : 0 <= index < size() (throws IndexOutOfBoundsException if not)
     // post: removes value at the given index, shifting subsequent values left
     public void remove(int index) {
+        checkIndex(index);
         for (int i = index; i < size - 1; i++) {
             elementData[index] = elementData[index + 1];
         }
         size--;
+    }
+
+    // throws an IndexOutOfBoundsException if the given index is not a legal index of the current list
+    private void checkIndex(int index) {
+        if (index < 0 || index >= size) {
+            throw new IllegalArgumentException("index: " + index);
+        }
     }
 
     // ensures that the list has the given capacity; if not, the size is
