@@ -30,6 +30,22 @@ public class ArrayIntList {
         size++;
     }
 
+    // post : returns the position of the first occurrence of the given
+    //        value (-1 if not found)
+    public int indexOf(int value) {
+        for (int i = 0; i < size; i++) {
+            if (elementData[i] == value) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    // post: returns true if the given value is contained in the list,
+    //       false otherwise
+    public boolean contains(int value) {
+        return indexOf(value) >= 0;
+    }
     // returns a comma-separated, bracketed version of the list
     @Override
     public String toString() {
