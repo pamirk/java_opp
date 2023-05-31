@@ -30,6 +30,17 @@ public class ArrayIntList {
         size++;
     }
 
+    public void add(int index, int value) {
+        if (index < 0 || index > size) {
+            throw new IllegalArgumentException("index: " + index);
+        }
+        for (int i = size; i > index; i--) {
+            elementData[i] = elementData[i - 1];
+        }
+        elementData[index] = value;
+        size++;
+    }
+
     // post : returns the position of the first occurrence of the given
     //        value (-1 if not found)
     public int indexOf(int value) {
@@ -46,6 +57,7 @@ public class ArrayIntList {
     public boolean contains(int value) {
         return indexOf(value) >= 0;
     }
+
     // returns a comma-separated, bracketed version of the list
     @Override
     public String toString() {
