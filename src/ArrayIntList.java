@@ -21,6 +21,10 @@ public class ArrayIntList {
         return size;
     }
 
+    public int get(int index) {
+        return elementData[index];
+    }
+
     public void add(int value) {
         elementData[size] = value;
         size++;
