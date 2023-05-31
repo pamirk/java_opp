@@ -4,6 +4,7 @@ public class ArrayIntList {
     private int size;
 
     public static final int DEFAULT_CAPACITY = 100;
+
     public ArrayIntList() {
         this(DEFAULT_CAPACITY);
     }
@@ -15,6 +16,11 @@ public class ArrayIntList {
         elementData = new int[capacity];
         size = 0;
     }
+
+    public int size() {
+        return size;
+    }
+
     public void add(int value) {
         elementData[size] = value;
         size++;
