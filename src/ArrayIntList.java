@@ -8,6 +8,9 @@ public class ArrayIntList {
     }
 
     public ArrayIntList(int capacity) {
+        if (capacity < 0) {
+            throw new IllegalArgumentException("capacity: " + capacity);
+        }
         elementData = new int[capacity];
         size = 0;
     }
